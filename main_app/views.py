@@ -6,7 +6,7 @@ from .models import Snack
 
 class SnackCreate(CreateView):
   model = Snack
-  fields='__all__'
+  fields= '__all__'
 
 class SnackUpdate(UpdateView):
   model = Snack
