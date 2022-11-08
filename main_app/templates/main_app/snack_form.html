@@ -8,7 +8,11 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Add a Snack</h1>
+  {% if snack %}
+    <h1>Edit {{snack.name}}</h1>
+  {% else %}
+    <h1>Add a Snack</h1>
+  {% endif %}
   {% comment %} <img src="{% static 'images/nerd-cat.svg' %}" alt="A cat using a computer"/> {% endcomment %}
 </div>
 {% comment %} 
