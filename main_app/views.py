@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic.edit import CreateView
+
 from .models import Snack
 # Create your views here.
+
+class SnackCreate(CreateView):
+  model = Snack
+  fields='__all__'
 
 def snacks_index(request):
   snacks = Snack.objects.all()
