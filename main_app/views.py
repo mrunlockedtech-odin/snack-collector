@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Snack
 # Create your views here.
@@ -7,6 +7,14 @@ from .models import Snack
 class SnackCreate(CreateView):
   model = Snack
   fields='__all__'
+
+class SnackUpdate(UpdateView):
+  model = Snack
+  fields = ['type','description']
+
+class SnackDelete(DeleteView):
+  model = Snack
+  success_url: '/snacks/'
 
 def snacks_index(request):
   snacks = Snack.objects.all()

@@ -22,6 +22,10 @@
     <h1>{{ snack.name }}</h1>
     <p>{{snack.type}}</p>
     <p>{{ snack.description }}</p>
+    <div class="snack-actions">
+      <a href="{% url 'snacks_update' snack.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'snacks_delete' snack.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 
