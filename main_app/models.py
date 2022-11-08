@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import datetime, timedelta
 
 # Create your models here.
 TYPES = (
@@ -18,6 +19,14 @@ class Snack(models.Model):
   
   def get_absolute_url(self):
       return reverse("snacks_detail", kwargs={"snack_id": self.id})
+  
+  def purchased_in_month(self):
+    output = False
+    for num in range(0,31):
+      if(self.purchase_set.filter(purchase_date=datetime.today()-timedelta(days=num)).count() > 0):
+        output = True
+    return output
+
 
 class Purchase(models.Model):
   purchase_date = models.DateField('Purchase Date')

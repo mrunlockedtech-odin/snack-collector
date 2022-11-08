@@ -49,6 +49,11 @@
       method="post" 
       class="subsection-content"
     >
+    {% if snack.purchased_in_month %}
+      <p class="fed">You bought {{snack.name}} in the last 30 days!</p>
+    {% else %}
+      <p class="unfed">{{snack.name}} have not been purchased in the last 30 days!</p>
+    {% endif %}
       {% csrf_token %}
       {{ purchase_form.as_p }}
       <button type="submit" class="btn submit">Add Purchase</button>
