@@ -9,7 +9,9 @@ class Snack:
     self.description = description
 
 snacks = [
-  Snack('Doritos', 'Chips', 'Dust is really tasty, nice crisp')
+  Snack('Doritos', 'Chips', 'Dust is really tasty, nice crisp'),
+  Snack('Takis', 'Chips', 'Really hot for some people, blue bag'),
+  Snack('Chips A-hoy', 'Cookies', 'Also come in a blue package (The main flavor)'),
 ]
 
 def snacks_index(request):
