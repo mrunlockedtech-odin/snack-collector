@@ -33,6 +33,16 @@
     <div class="subsection-title">
       <h2>Purchases</h2>
     </div>
+    <h3>Add a Purchase</h3>
+    <form
+      method="post" 
+      class="subsection-content"
+    >
+      {% csrf_token %}
+      {{ purchase_form.as_p }}
+      <button type="submit" class="btn submit">Add Purchase</button>
+    </form>
+    <h3>Past Purchases</h3>
     <table>
       <thead>
         <tr><th>Date</th><th>Location</th></tr>

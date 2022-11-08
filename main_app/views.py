@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Snack
+from .forms import PurchaseForm
 # Create your views here.
 
 class SnackCreate(CreateView):
@@ -27,4 +28,5 @@ def about(request):
 
 def snacks_detail(request, snack_id):
   snack = Snack.objects.get(id=snack_id)
-  return render(request, 'snacks/detail.html', { 'snack':snack })
+  purchase_form = PurchaseForm()
+  return render(request, 'snacks/detail.html', { 'snack':snack, 'purchase_form':purchase_form })
