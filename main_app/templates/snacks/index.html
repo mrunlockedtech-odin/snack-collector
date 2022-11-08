@@ -18,17 +18,19 @@
 <section class="card-container">
   {% for snack in snacks %}
     <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img 
-            src="{% static 'images/splash.svg' %}" 
-            alt="snacks image"
-          >
+      <a href="/snacks/{{ snack.id }}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img 
+              src="{% static 'images/splash.svg' %}" 
+              alt="snacks image"
+            >
+          </div>
+          <h2 class="card-title">{{ snack.name }}</h2>
+          <p>{{ snack.type }}</p>
+          <p><small>{{ snack.description }}</small></p>
         </div>
-        <h2 class="card-title">{{ snack.name }}</h2>
-        <p>{{ snack.type }}</p>
-        <p><small>{{ snack.description }}</small></p>
-      </div>
+      </a>
     </div>
   {% endfor %}
 </section>

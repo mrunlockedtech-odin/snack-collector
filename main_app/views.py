@@ -11,3 +11,7 @@ def home(request):
   return render(request, 'home.html')
 def about(request):
   return render(request,'about.html')
+
+def snacks_detail(request, snack_id):
+  snack = Snack.objects.get(id=snack_id)
+  return render(request, 'snacks/detail.html', { 'snack':snack })

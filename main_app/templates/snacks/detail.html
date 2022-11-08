@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/snacks/snack-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="snack-container">
+  <div class="snack-img">
+    <img 
+      src="{% static 'images/chip.svg' %}" 
+      alt="A chip"
+    >
+  </div>
+  <div class="snack-details">
+    <h1>{{ snack.name }}</h1>
+    <p>{{snack.type}}</p>
+    <p>{{ snack.description }}</p>
+  </div>
+</section>
+
+{% endblock %}
