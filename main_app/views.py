@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Snack
@@ -30,3 +30,11 @@ def snacks_detail(request, snack_id):
   snack = Snack.objects.get(id=snack_id)
   purchase_form = PurchaseForm()
   return render(request, 'snacks/detail.html', { 'snack':snack, 'purchase_form':purchase_form })
+
+def add_purchase(request, snack_id):
+  form = PurchaseForm(request.POST)
+  if form.is_valid():
+    new_purchase = form.save(commit=False)
+    new_purchase.snack_id = snack_id
+    new_purchase.save()
+  return redirect('snacks_detail', snack_id=snack_id)

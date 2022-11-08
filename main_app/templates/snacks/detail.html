@@ -3,10 +3,20 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/snacks/snack-detail.css' %}"
 />
+<script defer src="{% static 'js/snack-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -35,6 +45,7 @@
     </div>
     <h3>Add a Purchase</h3>
     <form
+      action="{% url 'add_purchase' snack.id %}"
       method="post" 
       class="subsection-content"
     >
@@ -43,6 +54,7 @@
       <button type="submit" class="btn submit">Add Purchase</button>
     </form>
     <h3>Past Purchases</h3>
+    {% if snack.purchase_set.all.count %}
     <table>
       <thead>
         <tr><th>Date</th><th>Location</th></tr>
@@ -56,6 +68,11 @@
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+    <div class="subsection-content">
+      <p>{{snack.name}} have no purchases</p>
+    </div>
+    {% endif %}
   </section>
 </div>
 

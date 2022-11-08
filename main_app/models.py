@@ -26,3 +26,6 @@ class Purchase(models.Model):
 
   def __str__(self):
     return f"This item was purchased at {self.store_name} on {self.purchase_date}"
+
+  class Meta:
+    ordering = ['-purchase_date']
