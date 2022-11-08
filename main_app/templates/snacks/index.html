@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/snacks/snack-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Snack List</h1>
+</section>
+
+<section class="card-container">
+  {% for snack in snacks %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img 
+            src="{% static 'images/splash.svg' %}" 
+            alt="snacks image"
+          >
+        </div>
+        <h2 class="card-title">{{ snack.name }}</h2>
+        <p>{{ snack.type }}</p>
+        <p><small>{{ snack.description }}</small></p>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
