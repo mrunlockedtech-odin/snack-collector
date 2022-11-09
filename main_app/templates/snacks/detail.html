@@ -50,9 +50,9 @@
       class="subsection-content"
     >
     {% if snack.purchased_in_month %}
-      <p class="fed">You bought {{snack.name}} in the last 30 days!</p>
+      <p class="purchased">You bought {{snack.name}} in the last 30 days!</p>
     {% else %}
-      <p class="unfed">{{snack.name}} have not been purchased in the last 30 days!</p>
+      <p class="not-purchased">{{snack.name}} have not been purchased in the last 30 days!</p>
     {% endif %}
       {% csrf_token %}
       {{ purchase_form.as_p }}
@@ -78,6 +78,51 @@
       <p>{{snack.name}} have no purchases</p>
     </div>
     {% endif %}
+  </section>
+  <section class="dishes">
+    <div class="subsection-title">
+      <h2>Dishes</h2>
+    </div>
+    <h3>{{ snack.name }}'s Dishes</h3>
+    <div class="subsection-content">
+      {% if snack.dishes.count %}
+        {% for dish in snack.dishes.all %}
+          <div class="dish-container">
+            <div 
+              class="color-block"
+            ></div>
+            <a href="{% url 'dishes_detail' dish.id %}">
+              <p>{{ dish.dish_name }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-dishes">{{snack.name}} doesn't have any dishes</p>
+      {% endif %}
+    </div>
+    <h3>Available Dishes</h3>
+    <div class="subsection-content">
+      {% if dishes.count %}
+        {% for dish in dishes.all %}
+          <div class="dish-container">
+            <div 
+              class="color-block"
+            ></div>
+            <a href="{% url 'dishes_detail' dish.id %}">
+              <p>{{ dish.dish_name }}</p>
+            </a>
+            <form action="{% url 'assoc_dish' snack.id dish.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Add Dish</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="all-dishes">
+          {{snack.name}} already has all the available dishes
+        </p>
+      {% endif %}
+    </div>
   </section>
 </div>
 

@@ -8,7 +8,7 @@ from .forms import PurchaseForm
 
 class SnackCreate(CreateView):
   model = Snack
-  fields= '__all__'
+  fields= ['name','type','description']
 
 class SnackUpdate(UpdateView):
   model = Snack
@@ -29,8 +29,9 @@ def about(request):
 
 def snacks_detail(request, snack_id):
   snack = Snack.objects.get(id=snack_id)
+  dishes_snack_doesnt_have = Dish.objects.exclude(id__in = snack.dishes.all().values_list('id'))
   purchase_form = PurchaseForm()
-  return render(request, 'snacks/detail.html', { 'snack':snack, 'purchase_form':purchase_form })
+  return render(request, 'snacks/detail.html', { 'snack':snack, 'purchase_form':purchase_form, 'dishes':dishes_snack_doesnt_have })
 
 def add_purchase(request, snack_id):
   form = PurchaseForm(request.POST)
@@ -57,3 +58,7 @@ class DishUpdate(UpdateView):
 class DishDelete(DeleteView):
   model = Dish
   success_url = '/dishes/'
+
+def assoc_dish(request, snack_id, dish_id):
+  Snack.objects.get(id=snack_id).dishes.add(dish_id)
+  return redirect('snacks_detail', snack_id=snack_id)

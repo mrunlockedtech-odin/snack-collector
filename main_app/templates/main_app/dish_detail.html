@@ -18,9 +18,11 @@
     <h2>{{ dish.dish_name }}</h2>
   </div>
 </div>
-<p>URL: <a href="{{dish.url}}">{{ dish.url }}</a></p>
+<div>
+  <p>URL: <a href="{{dish.url}}">{{ dish.url }}</a></p>
 
-<a href="{% url 'dishes_update' dish.id %}" class="btn warn">Edit</a>
-<a href="{% url 'dishes_delete' dish.id %}" class="btn danger">Delete</a>
+  <a href="{% url 'dishes_update' dish.id %}" class="btn warn">Edit</a>
+  <a href="{% url 'dishes_delete' dish.id %}" class="btn danger">Delete</a>
+</div>
 
 {% endblock %}

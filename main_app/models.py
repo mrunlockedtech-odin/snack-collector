@@ -11,7 +11,7 @@ class Dish(models.Model):
     return self.dish_name
   
   def get_absolute_url(self):
-      return reverse("dish_detail", kwargs={"pk": self.id})
+      return reverse("dishes_detail", kwargs={"pk": self.id})
   
 
 
@@ -25,6 +25,7 @@ class Snack(models.Model):
   name = models.CharField(max_length=50)
   type = models.CharField(max_length=20, choices = TYPES, default=TYPES[0])
   description = models.TextField(max_length=250)
+  dishes = models.ManyToManyField(Dish)
 
   def __str__(self):
     return self.name
