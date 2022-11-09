@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/dishes/dish-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+  
+<div class="card">
+  <div class="card-bg"></div>
+  <div class="card-content">
+    <img src="{% static 'images/dish.svg' %}" alt="">
+    <h2>{{ dish.dish_name }}</h2>
+  </div>
+</div>
+<p>URL: <a href="{{dish.url}}">{{ dish.url }}</a></p>
+
+<a href="{% url 'dishes_update' dish.id %}" class="btn warn">Edit</a>
+<a href="{% url 'dishes_delete' dish.id %}" class="btn danger">Delete</a>
+
+{% endblock %}

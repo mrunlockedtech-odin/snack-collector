@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 
-from .models import Snack
+from .models import Snack, Dish
 from .forms import PurchaseForm
 # Create your views here.
 
@@ -15,7 +16,7 @@ class SnackUpdate(UpdateView):
 
 class SnackDelete(DeleteView):
   model = Snack
-  success_url: '/snacks/'
+  success_url = '/snacks/'
 
 def snacks_index(request):
   snacks = Snack.objects.all()
@@ -38,3 +39,21 @@ def add_purchase(request, snack_id):
     new_purchase.snack_id = snack_id
     new_purchase.save()
   return redirect('snacks_detail', snack_id=snack_id)
+
+class DishCreate(CreateView):
+  model = Dish
+  fields = '__all__'
+
+class DishList(ListView):
+  model = Dish
+
+class DishDetail(DetailView):
+  model = Dish
+
+class DishUpdate(UpdateView):
+  model = Dish
+  fields = ['url']
+
+class DishDelete(DeleteView):
+  model = Dish
+  success_url = '/dishes/'

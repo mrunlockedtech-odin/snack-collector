@@ -3,6 +3,18 @@ from django.urls import reverse
 from datetime import datetime, timedelta
 
 # Create your models here.
+class Dish(models.Model):
+  url = models.CharField(max_length = 2048)
+  dish_name = models.CharField(max_length = 50)
+
+  def __str__(self):
+    return self.dish_name
+  
+  def get_absolute_url(self):
+      return reverse("dish_detail", kwargs={"pk": self.id})
+  
+
+
 TYPES = (
   ('Chips','Chips'),
   ('Cookies','Cookies'),
