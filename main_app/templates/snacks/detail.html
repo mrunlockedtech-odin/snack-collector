@@ -24,8 +24,8 @@
 <section class="snack-container">
   <div class="snack-img">
     <img 
-      src="{% static 'images/chip.svg' %}" 
-      alt="A chip"
+      src ="{% static 'images/' %}{{snack.type}}.svg"  
+      alt={{snack.name}}
     >
   </div>
   <div class="snack-details">
