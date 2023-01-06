@@ -6,16 +6,16 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=railway
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=ku5imDHbfUT10RwjjUKo
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:$PORT
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "6781:6781"
     environment:
       - POSTGRES_NAME=railway
       - POSTGRES_USER=postgres
