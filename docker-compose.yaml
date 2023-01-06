@@ -17,8 +17,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - POSTGRES_NAME=postgres
+      - POSTGRES_NAME=railway
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=ku5imDHbfUT10RwjjUKo
     depends_on:
       - db

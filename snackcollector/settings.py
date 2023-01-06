@@ -85,8 +85,8 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRES_NAME'),
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': 5432,
+        'HOST': 'containers-us-west-86.railway.app',
+        'PORT': 6781,
     }
 }
 
