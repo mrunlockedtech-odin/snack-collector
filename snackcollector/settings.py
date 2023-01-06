@@ -133,7 +133,7 @@ LOGIN_REDIRECT_URL = 'snacks_index'
 
 LOGOUT_REDIRECT_URL = 'home'
 
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-2db1.up.railway.app']
 
 
 # Default primary key field type
