@@ -30,7 +30,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['snackcollectornbj.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -134,7 +134,7 @@ LOGIN_REDIRECT_URL = 'snacks_index'
 
 LOGOUT_REDIRECT_URL = 'home'
 
-CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['*']
 
 
 # Default primary key field type
