@@ -134,6 +134,7 @@ LOGIN_REDIRECT_URL = 'snacks_index'
 
 LOGOUT_REDIRECT_URL = 'home'
 
+CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app']
 
 
 # Default primary key field type
